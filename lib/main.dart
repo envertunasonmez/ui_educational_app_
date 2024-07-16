@@ -1,7 +1,6 @@
 import 'package:educational_app_ui/constant/colors.dart';
+import 'package:educational_app_ui/screens/subject.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: StaticColors.backgroundColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: const SubjectScreen(),
     );
   }
 }

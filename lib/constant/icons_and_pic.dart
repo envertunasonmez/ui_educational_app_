@@ -10,5 +10,5 @@ class StaticIcons {
   static String subject = 'assets/icons/ic_subject.svg';
 
   //images
-  static String profile = 'assets/images/img_profife.svg';
+  static String profile = 'assets/images/user-image.svg';
 }

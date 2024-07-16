@@ -1,7 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:educational_app_ui/constant/colors.dart';
@@ -25,69 +24,74 @@ class PendingTestContainer extends StatelessWidget {
   final Color lessonBackGround;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 2,
-      decoration: BoxDecoration(
-          color: colorContainer, borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              text,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: textColor,
+    return Expanded(
+      child: Container(
+        width: MediaQuery.of(context).size.width / 2,
+        decoration: BoxDecoration(
+            color: colorContainer, borderRadius: BorderRadius.circular(20)),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                text,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: textColor,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Row(
-                children: [
-                  Container(
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: lessonBackGround,
-                      borderRadius: BorderRadius.circular(
-                        20,
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: lessonBackGround,
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
                       ),
-                    ),
-                    child: Center(
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          textLesson,
-                          style: TextStyle(
-                            color: lessonColor,
+                      child: Center(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            textLesson,
+                            style: TextStyle(
+                              color: lessonColor,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(
-                        StaticIcons.clock,
-                        width: 24,
+                    Expanded(
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          StaticIcons.clock,
+                          width: 24,
+                        ),
                       ),
                     ),
-                  ),
-                  const Expanded(
-                    child: Text(
-                      '1d:10Hr',
-                      style: TextStyle(
-                        color: StaticColors.clockColor,
+                    const Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          '1d:10Hr',
+                          style: TextStyle(
+                            color: StaticColors.clockColor,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

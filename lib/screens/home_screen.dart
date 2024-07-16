@@ -1,156 +1,129 @@
+import 'package:educational_app_ui/widgets/app_bar.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
 import 'package:educational_app_ui/constant/colors.dart';
 import 'package:educational_app_ui/constant/icons_and_pic.dart';
+import 'package:educational_app_ui/widgets/icon_widget.dart';
+import 'package:educational_app_ui/widgets/nav_bar.dart';
 import 'package:educational_app_ui/widgets/pending_test.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:educational_app_ui/widgets/subjects.dart';
+import 'package:educational_app_ui/widgets/text.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    print('Tıklandı');
-                  },
-                  icon: SvgPicture.asset(
-                    StaticIcons.menu,
-                  ),
-                ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {
-                    print('Tıklandı');
-                  },
-                  icon: SvgPicture.asset(
-                    StaticIcons.notifications,
-                  ),
-                ),
-                Center(
-                  child: CircleAvatar(
-                    child: SvgPicture.asset(
-                      StaticIcons.profile,
+      bottomNavigationBar: NavBarWidget(
+        navBarHome: StaticIcons.home,
+        navBarSubject: StaticIcons.subject,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppBarWidget(),
+              const TextWidgets(),
+              Padding(
+                padding: const EdgeInsets.only(top: 28.0),
+                child: Container(
+                  height: 130,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    gradient: const LinearGradient(
+                      colors: [
+                        StaticColors.advert,
+                        StaticColors.primary,
+                        StaticColors.colorMathSecond,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const Text(
-              'Hi Rohan,',
-              style: TextStyle(fontSize: 36, fontWeight: FontWeight.w500),
-            ),
-            const Text(
-              'You have 4 pending test this week',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 28.0),
-              child: Container(
-                height: 130,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  gradient: const LinearGradient(
-                    colors: [
-                      StaticColors.advert,
-                      StaticColors.primary,
-                      StaticColors.colorMathSecond,
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    children: [
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                '300',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 8.0),
-                                child: Text(
-                                  'Points',
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  '300',
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 30,
                                     color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            'Cross 500 within the week to\nget a free One on One Class.',
-                            style: TextStyle(
-                              color: Colors.white,
+                                Padding(
+                                  padding: EdgeInsets.only(top: 8.0),
+                                  child: Text(
+                                    'Points',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Take test now',
-                          style: const TextStyle(
-                            color: StaticColors.primary,
+                            Text(
+                              'Cross 500 within the week to\nget a free One on One Class.',
+                              style: TextStyle(
+                                color: StaticColors.subtitleAdvert,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Take test now',
+                            style: const TextStyle(
+                              color: StaticColors.primary,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                           ),
                         ),
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12))),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                children: [
-                  const Text(
-                    '4 Pending tests',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      StaticIcons.info,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Column(
-              children: [
-                Row(
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
                   children: [
-                    Expanded(
-                      child: PendingTestContainer(
+                    Text(
+                      '4 Pending tests',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    IconButtonWidgets(icon: StaticIcons.info),
+                  ],
+                ),
+              ),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      PendingTestContainer(
                         lessonColor: StaticColors.colorPhysicsFirst,
                         lessonBackGround: StaticColors.physicsBackGround,
                         colorContainer: Colors.white,
@@ -158,12 +131,10 @@ class HomeScreen extends StatelessWidget {
                         textColor: Colors.black,
                         textLesson: 'Physics',
                       ),
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Expanded(
-                      child: PendingTestContainer(
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      PendingTestContainer(
                         lessonColor: StaticColors.colorChemistryFirst,
                         lessonBackGround: StaticColors.chemistrysBackGround,
                         colorContainer: Colors.white,
@@ -171,16 +142,14 @@ class HomeScreen extends StatelessWidget {
                         textColor: Colors.black,
                         textLesson: 'Chemistry',
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: PendingTestContainer(
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Row(
+                    children: [
+                      PendingTestContainer(
                         lessonColor: StaticColors.colorMathFirst,
                         lessonBackGround: StaticColors.mathsBackGround,
                         colorContainer: Colors.white,
@@ -188,12 +157,10 @@ class HomeScreen extends StatelessWidget {
                         textColor: Colors.black,
                         textLesson: 'Maths',
                       ),
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Expanded(
-                      child: PendingTestContainer(
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      PendingTestContainer(
                         lessonColor: StaticColors.colorPhysicsFirst,
                         lessonBackGround: StaticColors.physicsBackGround,
                         colorContainer: Colors.white,
@@ -201,12 +168,62 @@ class HomeScreen extends StatelessWidget {
                         textColor: Colors.black,
                         textLesson: 'Physics',
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                ],
+              ),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'Subjects',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              Row(
+                children: [
+                  SubjectsWidget(
+                    lessonName: 'Mathematics',
+                    firstColor: StaticColors.colorMathFirst,
+                    secondColor: StaticColors.colorMathSecond,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  SubjectsWidget(
+                    lessonName: 'Chemistry',
+                    firstColor: StaticColors.colorChemistryFirst,
+                    secondColor: StaticColors.colorChemistrySecond,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Row(
+                children: [
+                  SubjectsWidget(
+                    lessonName: 'Physics',
+                    firstColor: StaticColors.colorPhysicsFirst,
+                    secondColor: StaticColors.colorPhysicsSecond,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  SubjectsWidget(
+                    lessonName: 'Reasoning',
+                    firstColor: StaticColors.colorReasoningFirst,
+                    secondColor: StaticColors.colorReasoningSecond,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+            ],
+          ),
         ),
       ),
     );
