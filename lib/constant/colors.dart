@@ -17,4 +17,5 @@ class StaticColors {
   static const Color physicsBackGround = Color(0xFFEADDFF);
   static const Color mathsBackGround = Color(0xFFE8EBFF);
   static const Color chemistrysBackGround = Color(0xFFFFF4ED);
+  static const Color subtitleAdvert = Color(0xFFD1D1D6);
 }
